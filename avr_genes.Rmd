@@ -1,0 +1,41 @@
+---
+title: "selection avr genes"
+author: "Shankar K Shakya"
+date: "July 27, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Avr1 PITG_16663
+
+```{r}
+
+avr1 <- readRDS("avr1_dnabin.RData")
+
+avr1_hap1 <- avr1[seq(1, length(labels(avr1)), by= 2), ]
+
+alview(trans(avr1_hap1))
+
+n_term_avr1_hap1 <- avr1_hap1[, 1:132]
+alview(trans(n_term_avr1_hap1))
+
+c_term_avr1_hap1 <- avr1_hap1[, 133:627]
+alview(trans(c_term_avr1_hap1))
+
+my_kaks <- function(dnabin){
+  align <- ape::as.alignment(dnabin)
+  dnds <- seqinr::kaks(align)
+  dnds <- dnds$ka/dnds$ks
+  as.matrix(dnds)[,1, drop = F]
+  
+}
+
+my_kaks(n_term_avr1_hap1)
+my_kaks(c_term_avr1_hap1)
+
+
+
+```
