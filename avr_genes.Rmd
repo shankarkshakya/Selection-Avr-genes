@@ -85,5 +85,44 @@ my_kaks(avr3a_hap1[ , 142:444])
 ```
 
 
+## Avrvnt1
+
+```{r}
+
+seq_dnabin <- readRDS("Pinf_conserved_RXLR_APS_with_refseq.RData")
+
+#avrvnt1 <- seq_dnabin$PITG_16294[, 145:ncol(seq_dnabin$PITG_16294)]
+avrvnt1 <- seq_dnabin$PITG_16294
+
+avrvnt1_hap1 <-  avrvnt1[seq(1, length(labels(avrvnt1)), by= 2), ]
+
+alview(trans(avrvnt1_hap1)[,1:50])
+alview(trans(avrvnt1_hap1)[,51:154])
+
+my_kaks(avrvnt1[,1:150])
+my_kaks(avrvnt1[, 151:462])
+
+
+
+```
+
+## Avrblb1
+
+```{r}
+seq_dnabin <- readRDS("Pinf_conserved_RXLR_APS_with_refseq.RData")
+
+avrblb1 <- seq_dnabin$PITG_21388
+avrblb1 <- avrblb1[grep("P7722|mir|ipo", rownames(avrblb1), invert = T), ]
+avrblb1_hap1 <- avrblb1[seq(1, length(labels(avrblb1)), by= 2), ]
+
+alview(trans(avrblb1_hap1)[, 1:54])
+
+my_kaks(avrblb1[,1:162])
+
+my_kaks(avrblb1[,163:459])
+
+
+```
+
 
 
