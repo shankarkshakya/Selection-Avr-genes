@@ -13,11 +13,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 
+library(ape)
 avr1 <- readRDS("avr1_dnabin.RData")
 
 avr1_hap1 <- avr1[seq(1, length(labels(avr1)), by= 2), ]
 
-alview(trans(avr1_hap1))
+#alview(trans(avr1_hap1))
 
 n_term_avr1_hap1 <- avr1_hap1[, 1:132]
 alview(trans(n_term_avr1_hap1))
@@ -39,3 +40,50 @@ my_kaks(c_term_avr1_hap1)
 
 
 ```
+
+
+
+## Avr2 PITG_22870
+
+```{r}
+
+seq_dnabin <- readRDS("Pinf_conserved_RXLR_APS_with_refseq.RData")
+
+avr2 <- seq_dnabin$PITG_22870
+
+avr2 <- avr2[grep("P7722|mir", rownames(avr2), invert = T), ]
+avr2_hap1 <-  avr2[seq(1, length(labels(avr2)), by= 2), ]
+
+alview(trans(avr2_hap1))
+
+my_kaks(avr2_hap1[, 1:156])
+my_kaks(avr2_hap1[, 157:351])
+
+
+```
+
+
+## Avr3a
+
+```{r}
+
+seq_dnabin <- readRDS("Pinf_conserved_RXLR_APS_with_refseq.RData")
+
+
+#avr3a <- seq_dnabin$PITG_14371[, 145:ncol(seq_dnabin$PITG_14371)]
+avr3a <- seq_dnabin$PITG_14371
+
+avr3a <- avr3a[grep("P7722|mir|ipo", rownames(avr3a), invert = T), ]
+avr3a_hap1 <-  avr3a[seq(1, length(labels(avr3a)), by= 2), ]
+
+alview(trans(avr3a_hap1))
+
+my_kaks(avr3a_hap1[,1:141])
+my_kaks(avr3a_hap1[ , 142:444])
+
+
+```
+
+
+
+
